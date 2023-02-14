@@ -1,0 +1,11 @@
+.app-footer {
+
+    main {
+        @include flex;
+    }
+
+    nav>* {
+        padding: 1em 0;
+        margin-inline-start: 1em;
+    }
+}

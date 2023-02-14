@@ -1,0 +1,14 @@
+.contact-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
+    margin-bottom: 2em;
+
+    @include for-narrow-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include for-normal-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

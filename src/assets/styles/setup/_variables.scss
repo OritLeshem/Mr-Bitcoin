@@ -1,0 +1,33 @@
+// COLOR PALETTE
+// Primary
+$prim-clr1: #7878FA;
+$prim-clr2: #6262D9;
+
+// font color
+$font-clr1: #F2F2FA;
+$font-clr2: #E4E4F0;
+$font-clr3: #D5D5E0;
+$font-clr4: #A7A7CC;
+
+// bgc
+$bgc1: #16171A; //main
+$bgc2: #232336; //card
+
+// Gradients
+$grd-clr1: linear-gradient(5deg, #9D62D9, #6262D9 );
+$grd-clr2: linear-gradient(105deg, #4358BF, #7087FA);
+$grd-clr3: linear-gradient(60deg, #70C1FA, #3083BF);
+$grd-clr4: linear-gradient(180deg, rgba(116, 116, 242, 0.6) 0%, rgba(116, 116, 242, 0.01) 100%);
+$grd-clr5: radial-gradient(96.4% 96.4% at 7.14% 3.6%, rgba(35, 35, 54, 0.7) 0%, rgba(35, 35, 54, 0.7) 0.01%, rgba(35, 35, 54, 0.1) 100%);
+
+// LAYOUT
+$layoutPadding: 16px;
+
+// LAYOUT BREAKPOINTS
+$break-narrow: 400px;
+$break-normal: 760px;
+$break-wide: 1100px;
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

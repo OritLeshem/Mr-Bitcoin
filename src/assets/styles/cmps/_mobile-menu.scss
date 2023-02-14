@@ -1,0 +1,74 @@
+// .menu-toggle-btn {
+//     display: none;
+// }
+
+// @include for-mobile-layout {
+//     .menu-toggle-btn {
+//         display: block;
+//         color: $font-clr1;
+//     }
+
+//     .main-screen {
+//         position: fixed;
+//         z-index: 1;
+//         left: 0;
+//         top: 0;
+//         width: 100%;
+//         height: 100%;
+//         overflow: auto;
+//         background-color: rgba(0, 0, 0, 0.4);
+//         margin: 0;
+//     }
+
+//     .mobile-menu {
+//         position: absolute;
+//         right: 0;
+//         height: 100%;
+//         width: 30%;
+//         background-color: $bgc2;
+//         opacity: 0.9;
+//         z-index: 10;
+//         border: 1px solid $bgc2;
+//         transform: translateX(100%);
+//         transition: all 0.3s ease;
+
+//     }
+
+// .logo {
+//     display: none;
+// }
+
+// .user-detail {
+//     display: none;
+//     background-color: yellow;
+// }
+
+//     .user-img {
+//         display: none;
+//     }
+
+//     .user-info {
+//         display: none;
+//     }
+
+//     .rate-info {
+//         display: none;
+//     }
+
+//     nav {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: start;
+//         height: 100vh;
+//         background-color: pink;
+//         margin: 0px 0px;
+//         color: $font-clr1;
+//         width: 80%;
+//         ;
+
+//         a {
+//             width: 100%;
+//             border-bottom: 1px solid $font-clr1;
+//         }
+//     }
+// }
