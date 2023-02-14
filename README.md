@@ -1,14 +1,18 @@
-# cars
+
 
 Mr Bitcoin
  https://oritleshem.github.io/Mr-Bitcoin/
 
-my first vue.js app
+my first vue.js app.
+
 
 crud of contacts
 api of bitcoin rate and monthly data.
 
-
+build with:
+vue.js
+vuex
+sass
 
 ![2023-02-14_13-14-49](https://user-images.githubusercontent.com/80868084/218822895-bd5ea604-5d72-47bf-acbd-f81de4ecef37.png)
 
