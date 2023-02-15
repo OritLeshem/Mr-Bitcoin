@@ -6,7 +6,7 @@ Mr Bitcoin
 my first vue.js app.
 
 
-crud of contacts
+crud of contacts, routes and state manegement.
 api of bitcoin rate and monthly data.
 
 build with:
