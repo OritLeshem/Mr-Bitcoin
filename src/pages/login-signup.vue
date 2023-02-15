@@ -8,7 +8,6 @@
 
 <script>
 import { userService } from "@/services/user.service.js";
-console.log(userService);
 export default {
   data() {
     return {

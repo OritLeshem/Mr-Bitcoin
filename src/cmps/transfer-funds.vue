@@ -26,26 +26,30 @@ export default {
       transfer: 0,
     };
   },
+  computed: {
+    user() {
+      let user = this.$store.state.userStore.user;
+      // let user = userService.getLoggedinUser();
+      console.log(" user from trasfer", user);
+      return user;
+    },
+  },
   methods: {
     async onTransfer(transfer) {
       // await userService.transferFunds(transfer);
       try {
         await this.$store.dispatch({
-          type: "saveUser",
+          type: "saveTransfer",
           user: this.user,
+          transfer: this.transfer,
         });
+        this.transfer = "";
       } catch (error) {
         console.log("error", error);
       }
       //  finally {
-      //   this.$router.push("/");
+      //   this.$router.push("/contact");
       // }
-    },
-  },
-
-  computed: {
-    user() {
-      return this.$store.state.userStore.user;
     },
   },
 };

@@ -62,18 +62,21 @@ async function login(userName) {
   }
 }
 async function signup(user) {
-  console.log("sign up userRRRRRRRRRRR", user)
+
+  // console.log("sign up userRRRRRRRRRRR", user)
   const users = await storageService.query('user')
   let loggedInAlready = users.find(u => u.name === user.name)
-  console.log('loggedInAlready', loggedInAlready)
+  // console.log('loggedInAlready', loggedInAlready)
   if (loggedInAlready) {
-    console.log("logged in already")
+    // console.log("logged in already")
     return _saveLoggedinUser(user)
 
   }
   else {
     user.balance = 100
+    user._id = _makeId()
     user = await storageService.post('user', user)
+    user = { ...user }
     return _saveLoggedinUser(user)
   }
 }
@@ -85,30 +88,32 @@ async function logout() {
 
 
 async function transferFunds(transfer) {
-
+  console.log('user transfer service', transfer)
   const user = getLoggedinUser()
-  console.log('transfer service ', user.balance, transfer)
+  console.log('user transfer service', user.balance, transfer)
   if (!user) throw new Error('Not loggedin')
   user.balance = user.balance - transfer || transfer
+  console.log('user transfer service2', user.balance, transfer)
   await update(user)
-  return user.balance
+  console.log('user transfer service3', user.balance, transfer)
+  return user
 }
 
 async function update(user) {
   await storageService.put('user', user)
-
-  if (getLoggedinUser()._id === user._id) {
-
-
-    const user1 = { ...user }
-    _saveLoggedinUser(user1)
-  }
-
-
-
+  if (getLoggedinUser()._id === user._id) _saveLoggedinUser(user)
+  console.log("update user service", user.balance)
+  return user
+}
+function _saveLoggedinUser(user) {
+  user = { _id: user._id, name: user.name, balance: user.balance, transactions: user.transactions, imgUrl: user.imgUrl }
+  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
 
+function getLoggedinUser() {
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
 
 async function getById(userId) {
   const user = await storageService.get('user', userId)
@@ -129,15 +134,7 @@ async function changeScore(by) {
 }
 
 
-function _saveLoggedinUser(user) {
-  user = { _id: user._id, name: user.name, balance: user.balance, transactions: user.transactions, imgUrl: user.imgUrl }
-  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-  return user
-}
 
-function getLoggedinUser() {
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-}
 
 function _createUsers() {
   let users = utilService.loadFromStorage(STORAGE_KEY)
@@ -181,8 +178,18 @@ async function save(user) {
   } else {
     // Later, owner is set by the backend
     // contact.owner = userService.getLoggedinUser()
+
     savedUser = signup(user)
     // savedUser = await storageService.post(STORAGE_KEY, user)
   }
+  console.log("savedUser service", savedUser)
   return savedUser
+}
+function _makeId(length = 5) {
+  var text = ''
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return text
 }
