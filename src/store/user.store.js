@@ -1,5 +1,4 @@
 import { userService } from "../services/user.service.js"
-
 export const userStore = {
     state: {
 
@@ -20,8 +19,9 @@ export const userStore = {
             console.log('payload: ', user)
             state.user = user
         },
-        signup(state, { user }) {
-            state.users.push(user)
+        signup(state, { savedUser }) {
+            state.users.push(savedUser)
+            state.user = savedUser
         },
         updateUser(state, { user }) {
             const idx = state.users.findIndex(u => u._id === user._id)
@@ -37,31 +37,23 @@ export const userStore = {
                 throw err
             }
         },
-        async saveUser({ commit }, { user }) {
-            console.log('save user store ', user.balance)
-            const actionType = (user._id) ? 'updateUser' : 'signup'
+        async signup(context, { user }) {
+            console.log('context', context)
             try {
-                const savedUser = await userService.save(user)
-                commit({ type: actionType, contact: savedUser })
+                const savedUser = await userService.signup(user)
+                context.commit({ type: 'signup', savedUser })
                 return savedUser
             } catch (err) {
-
                 throw err
             }
         },
         async saveTransfer({ commit }, { transfer }) {
             console.log('save user store ', transfer)
-            // const actionType = (user._id) ? 'updateUser' : 'signup'
             try {
-                // const savedUser = await userService.save(user)
                 const user = await userService.transferFunds(transfer)
                 console.log('user', user)
-                // user = user
                 commit({ type: 'setLoggedinUser', user })
-                // commit({ type: actionType, contact: savedUser })
-                // return savedUser
             } catch (err) {
-
                 throw err
             }
         },

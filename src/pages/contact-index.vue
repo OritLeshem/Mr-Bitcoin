@@ -1,23 +1,20 @@
 <template>
-  <div class="main-container">
+  <div class="main-container-contact">
     <UserMsg />
     <ContactFilter @filter="onSetFilterBy" />
+    <RouterLink to="/contact/edit"
+      ><button class="add-contact prim-btn">Add a Contact</button></RouterLink
+    >
     <ContactList
       @remove="removeContact"
       v-if="contacts"
       :contacts="filteredContacts"
     />
-    <RouterLink to="/contact/edit"
-      ><button class="prim-btn">Add a Contact</button></RouterLink
-    >
   </div>
 </template>
 
 <script>
-import { contactService } from "@/services/contact.service.js";
-import { bitcoinService } from "@/services/bitcoin.service.js";
 import { eventBus } from "@/services/eventBus.service.js";
-
 import ContactList from "@/cmps/contact-list.vue";
 import ContactFilter from "@/cmps/contact-filter.vue";
 import UserMsg from "@/cmps/user-msg.vue";
@@ -30,7 +27,6 @@ export default {
     };
   },
   async created() {
-    //  this.contacts = await contactService.getContacts()
     this.$store.dispatch({ type: "loadContacts" });
   },
   methods: {
@@ -71,8 +67,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.main-container {
-  position: relative;
-}
-</style>
+

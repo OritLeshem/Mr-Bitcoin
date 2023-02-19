@@ -1,5 +1,9 @@
+.home-page-mobile {
+    display: none;
+}
+
 .home-page {
-    min-height: 90vh;
+    height: 90vh;
     position: relative;
 
     main {
@@ -44,5 +48,38 @@
 
     span {
         display: block;
+    }
+}
+
+@media (max-width: $break-normal) {
+    .home-page {
+        display: none;
+    }
+
+    .home-page-mobile {
+        display: block;
+        height: 90vh;
+
+        div {
+            margin: 10vh auto;
+
+            border-radius: em(12px);
+            width: 90vw;
+            height: 35vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .home-page-mobile-info {
+            background: $grd-clr1;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .home-page-mobile-rate {
+            background: $grd-clr5;
+            box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px;
+        }
     }
 }

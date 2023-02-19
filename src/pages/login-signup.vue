@@ -1,9 +1,12 @@
-<template>
-  <form @submit.prevent="onSave" class="user-signup">
-    <input type="text" v-model="user.name" />
+<template >
+  <div class="login-signup">
+    <h1>Sign up</h1>
+    <form @submit.prevent="onSave">
+      <input type="text" placeholder="Enter your name" v-model="user.name" />
 
-    <button>Signup</button>
-  </form>
+      <button class="prim-btn">Signup</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -20,10 +23,12 @@ export default {
   methods: {
     async onSave() {
       try {
-        await this.$store.dispatch({
-          type: "saveUser",
+        this.user = await this.$store.dispatch({
+          type: "signup",
           user: this.user,
         });
+        console.log("signup user", this.user);
+        this.$router.push("/");
       } catch (error) {
         console.log("error", error);
       } finally {

@@ -17,4 +17,8 @@
         // ;
         // color: $bgc1
     }
+
+    @media (max-width: $break-normal) {
+        margin-top: 10vh;
+    }
 }
